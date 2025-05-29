@@ -2,11 +2,15 @@ import express from 'express';
 import 'dotenv/config';
 const app = express();
 import OpenAI from "openai";
+import cors from 'cors';
 import { assistantLimit } from './rateLimit.js';
 
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(cors({
+  origin: 'https://leetcode.com'
+}));
 
 let messages = [];
 
